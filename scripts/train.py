@@ -1,0 +1,24 @@
+import os
+import numpy as np
+from datetime import datetime
+import sys
+
+import isaacgym
+
+current_path = os.path.abspath(__file__)
+parent_dir = os.path.dirname(os.path.dirname(current_path))
+sys.path.append(parent_dir)
+from legged_gym.envs import *
+from legged_gym.utils import get_args, task_registry
+import torch
+
+def train(args):
+    env, env_cfg = task_registry.make_env(name=args.task, args=args)
+    ppo_runner, train_cfg = task_registry.make_alg_runner(env=env, name=args.task, args=args)
+    ppo_runner.learn(num_learning_iterations=train_cfg.runner.max_iterations, init_at_random_ep_len=True)
+
+if __name__ == '__main__':
+    args = get_args()
+    args.task = 'go2'
+    args.headless = True
+    train(args)
