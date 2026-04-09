@@ -5,4 +5,4 @@ This is a repository for reinforcement learning implementation based on Unitree 
 
 ## Start
 
-[Please see my blog for usage:](https://zhuanlan.zhihu.com/p/1911531244405097831)
+Please see my blog for usage:[link](https://zhuanlan.zhihu.com/p/1911531244405097831)
